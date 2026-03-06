@@ -21,6 +21,7 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
+  "exclude": [".agents/**"],
   "files": [],
   "references": [
     {

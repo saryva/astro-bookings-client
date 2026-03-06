@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ExampleComponent {
 
-  // --- Inputs (signal-based, Angular 17+) ---
+  // --- Inputs (signal-based) ---
   readonly item = input.required<MyModel>();
   readonly label = input<string>('Default label');
 

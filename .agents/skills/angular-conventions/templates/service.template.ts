@@ -1,12 +1,11 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap, throwError } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { MyModel } from '../models/my.model';
 
 @Injectable({ providedIn: 'root' })
 export class ExampleService {
-
   private readonly http = inject(HttpClient);
   private readonly baseUrl = environment.apiBaseUrl;
 
@@ -24,15 +23,15 @@ export class ExampleService {
     this.error.set(null);
 
     return this.http.get<MyModel[]>(`${this.baseUrl}/items`).pipe(
-      tap(items => {
+      tap((items) => {
         this.items.set(items);
         this.loading.set(false);
       }),
-      catchError(err => {
+      catchError((err) => {
         this.error.set('Failed to load items. Please try again.');
         this.loading.set(false);
         return throwError(() => err);
-      })
+      }),
     );
   }
 
@@ -42,13 +41,13 @@ export class ExampleService {
    */
   createItem(payload: Partial<MyModel>) {
     return this.http.post<MyModel>(`${this.baseUrl}/items`, payload).pipe(
-      tap(newItem => {
-        this.items.update(current => [...current, newItem]);
+      tap((newItem) => {
+        this.items.update((current) => [...current, newItem]);
       }),
-      catchError(err => {
+      catchError((err) => {
         this.error.set('Failed to create item. Please try again.');
         return throwError(() => err);
-      })
+      }),
     );
   }
 
@@ -59,12 +58,12 @@ export class ExampleService {
   deleteItem(id: string) {
     return this.http.delete(`${this.baseUrl}/items/${id}`).pipe(
       tap(() => {
-        this.items.update(current => current.filter(i => i.id !== id));
+        this.items.update((current) => current.filter((i) => i.id !== id));
       }),
-      catchError(err => {
+      catchError((err) => {
         this.error.set('Failed to delete item. Please try again.');
         return throwError(() => err);
-      })
+      }),
     );
   }
 }

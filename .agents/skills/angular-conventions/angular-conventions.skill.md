@@ -1,4 +1,4 @@
-# Skill: Angular 17+ Coding Conventions
+# Skill: Angular Coding Conventions
 
 > Usado por Agent 5 (Coder) y Agent 7 (Cleaner).
 > Carga solo los templates que necesites en cada momento.
@@ -11,7 +11,7 @@
 - Siempre `standalone: true` — nunca NgModule
 - Usar `inject()` en lugar de constructor injection
 - `ChangeDetectionStrategy.OnPush` en todos los componentes
-- Inputs con `input()` / `input.required()` (signal-based, Angular 17+)
+- Inputs con `input()` / `input.required()` (signal-based)
 - Outputs con `output<T>()`
 - Estado local con `signal()` y `computed()`
 
@@ -22,7 +22,7 @@
 - Nunca llamar HTTP directamente desde un componente
 
 ### Templates
-- Usar `@if` / `@else` / `@for` / `@switch` (nueva sintaxis Angular 17+)
+- Usar `@if` / `@else` / `@for` / `@switch` (nueva sintaxis de control flow)
 - Nunca NgIf, NgFor como directivas
 - `track item.id` obligatorio en todos los `@for`
 - Siempre manejar los tres estados: loading, error, empty

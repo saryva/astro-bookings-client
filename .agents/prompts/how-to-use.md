@@ -1,11 +1,11 @@
-# 📂 Prompts — Ready to Use
+# Prompts — Ready to Use
 
 These are copy-paste prompts to run each agent in your AI tool of choice
 (Claude, GitHub Copilot Chat, Cursor, etc.).
 
 ---
 
-## 🔍 Prompt 1 — Run the Analyst
+## Prompt 1 — Run the Analyst
 
 ```
 You are Agent 1 - Analyst. Read the instructions in `.agents/1-analyst.agent.md`.
@@ -18,7 +18,7 @@ Follow the output format and rules defined in the agent file exactly.
 
 ---
 
-## 🏛️ Prompt 2 — Run the Architect
+## Prompt 2 — Run the Architect
 
 ```
 You are Agent 2 - Architect. Read the instructions in `.agents/2-architect.agent.md`.
@@ -34,7 +34,7 @@ Follow the output format and rules defined in the agent file exactly.
 
 ---
 
-## 📋 Prompt 3 — Run the Product Owner
+## Prompt 3 — Run the Product Owner
 
 ```
 You are Agent 3 - Product Owner. Read the instructions in `.agents/3-product-owner.agent.md`.
@@ -50,7 +50,7 @@ Follow the output format and rules defined in the agent file exactly.
 
 ---
 
-## ⚙️ Prompt 4 — Run the Engineer
+## Prompt 4 — Run the Engineer
 
 ```
 You are Agent 4 - Engineer. Read the instructions in `.agents/4-engineer.agent.md`.
@@ -69,7 +69,7 @@ Follow the output format and rules defined in the agent file exactly.
 
 ---
 
-## 💻 Prompt 5 — Run the Coder
+## Prompt 5 — Run the Coder
 
 ```
 You are Agent 5 - Coder. Read the instructions in `.agents/5-coder.agent.md`.
@@ -80,16 +80,15 @@ Your inputs are:
 - `.agents/specs/bookings.spec.md`
 - `.agents/specs/shared.spec.md`
 - `.agents/specs/backlog.md`
-- `.agents/skills/angular-conventions.skill.md`
 
 Implement the full Angular application under `src/`.
 Follow the file structure defined in ADD.md exactly.
-Use Angular 17+ patterns: standalone components, signals, new control flow syntax.
+Follow Angular patterns defined in CLAUDE.md and the angular-conventions skill.
 ```
 
 ---
 
-## 🧪 Prompt 6 — Run the Tester
+## Prompt 6 — Run the Unit Tester
 
 ```
 You are Agent 6 - Tester. Read the instructions in `.agents/6-tester.agent.md`.
@@ -107,22 +106,37 @@ Produce a test report at `.agents/specs/test-report.md`.
 
 ---
 
-## 🧹 Prompt 7 — Run the Cleaner
+## Prompt 7 — Run the E2E Tester
 
 ```
-You are Agent 7 - Cleaner. Read the instructions in `.agents/7-cleaner.agent.md`.
+You are Agent 7 - E2E Tester. Read the instructions in `.agents/7-e2e-tester.agent.md`.
 
-Review all source files in `src/` and all `.spec.ts` test files.
+Your inputs are:
+- `.agents/specs/backlog.md`
+- The running application (`npm start`)
+
+Write Playwright E2E tests in `tests/` covering every acceptance criterion.
+Produce an E2E report at `.agents/specs/e2e-report.md`.
+```
+
+---
+
+## Prompt 8 — Run the Cleaner
+
+```
+You are Agent 8 - Cleaner. Read the instructions in `.agents/8-cleaner.agent.md`.
+
+Review all source files in `src/` and all test files.
 Fix all critical issues you find.
 Produce a code review report at `.agents/specs/code-review.md`.
 ```
 
 ---
 
-## 🚀 Prompt 8 — Run DevOps
+## Prompt 9 — Run DevOps
 
 ```
-You are Agent 8 - DevOps. Read the instructions in `.agents/8-dev-ops.agent.md`.
+You are Agent 9 - DevOps. Read the instructions in `.agents/9-dev-ops.agent.md`.
 
 Your inputs are all source files and `.agents/ADD.md`.
 
@@ -133,7 +147,7 @@ Produce:
 
 ---
 
-## 💡 Tips for Using These Prompts
+## Tips for Using These Prompts
 
 1. **Run agents in order** — each one depends on the output of the previous.
 2. **Review each output** before running the next agent — catch errors early.
