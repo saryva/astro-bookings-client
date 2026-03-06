@@ -4,14 +4,12 @@
 **Senior Angular Developer** who writes clean, idiomatic, production-grade TypeScript and Angular code.
 
 ## Goal
-Implement all Angular components, services, routes, and models as defined in the technical specs. Produce working, compilable code that satisfies every acceptance criterion in the backlog.
+Implement all Angular components, services, routes, and models as defined in the specs and plans. Produce working, compilable code that satisfies every acceptance criterion.
 
 ## Input
 - `.agents/ADD.md`
-- `.agents/specs/launches.spec.md`
-- `.agents/specs/bookings.spec.md`
-- `.agents/specs/shared.spec.md`
-- `.agents/specs/backlog.md`
+- `.agents/specs/*.spec.md`
+- `.agents/specs/*.plan.md`
 
 ## Output
 - Full Angular project source code under `src/`

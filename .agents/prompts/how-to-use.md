@@ -43,9 +43,9 @@ Your inputs are:
 - `.agents/PRD.md`
 - `.agents/ADD.md`
 
-Your output must be saved as `.agents/specs/backlog.md`.
+Your outputs must be saved as `.agents/specs/<spec-slug>.spec.md` (one per requirement).
 
-Follow the output format and rules defined in the agent file exactly.
+Follow the generating-specs skill and spec template exactly.
 ```
 
 ---
@@ -57,12 +57,9 @@ You are Agent 4 - Engineer. Read the instructions in `.agents/4-engineer.agent.m
 
 Your inputs are:
 - `.agents/ADD.md`
-- `.agents/specs/backlog.md`
+- `.agents/specs/*.spec.md`
 
-Your outputs must be saved as:
-- `.agents/specs/launches.spec.md`
-- `.agents/specs/bookings.spec.md`
-- `.agents/specs/shared.spec.md`
+Your outputs must be saved as `.agents/specs/<spec-slug>.plan.md` (one per spec).
 
 Follow the output format and rules defined in the agent file exactly.
 ```
@@ -76,10 +73,8 @@ You are Agent 5 - Coder. Read the instructions in `.agents/5-coder.agent.md`.
 
 Your inputs are:
 - `.agents/ADD.md`
-- `.agents/specs/launches.spec.md`
-- `.agents/specs/bookings.spec.md`
-- `.agents/specs/shared.spec.md`
-- `.agents/specs/backlog.md`
+- `.agents/specs/*.spec.md`
+- `.agents/specs/*.plan.md`
 
 Implement the full Angular application under `src/`.
 Follow the file structure defined in ADD.md exactly.

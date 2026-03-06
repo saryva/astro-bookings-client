@@ -4,24 +4,28 @@
 **Product Owner** who bridges business requirements and technical delivery.
 
 ## Goal
-Read the PRD and ADD, then produce a **prioritized backlog** of User Stories organized by feature.
+Read the PRD and ADD, then write a detailed specification for each feature, bug fix, or enhancement identified in the PRD.
 
 ## Input
 - `.agents/PRD.md`
 - `.agents/ADD.md`
 
 ## Output
-- `.agents/specs/backlog.md`
+- `.agents/specs/<spec-slug>.spec.md` (one per functional/technical requirement)
 
 ## Skill
 - [generating-specs](skills/generating-specs/SKILL.md)
 
 ## Instructions
 
-1. **Read** all input documents before writing.
-2. **Create** User Stories for every functional requirement in the PRD.
-3. **Map** each story to its corresponding Angular feature from the ADD.
-4. **Assign** story points (1, 2, 3, 5, 8) using Fibonacci scale.
-5. **Prioritize** stories as: Must Have / Should Have / Nice to Have.
-6. **Define** Definition of Done (DoD) for the project.
-7. **Organize** stories into logical sprints.
+1. **Read** PRD and ADD completely before writing anything.
+2. **Identify** each functional and technical requirement from the PRD.
+3. **For each requirement**, follow the generating-specs skill steps:
+   a. Classify as feat/bug/chore.
+   b. Define the problem clearly and concisely.
+   c. Write up to 3 User Stories from the user's perspective.
+   d. Outline the solution (interface, model, persistence) without technical details.
+   e. Set up to 9 Acceptance Criteria in EARS format.
+   f. Generate a spec-slug-id (e.g. `feat-launch-list`).
+   g. Write the spec at `.agents/specs/<spec-slug>.spec.md` using the spec template.
+4. **Review** all specs for completeness and consistency with PRD.
