@@ -1,0 +1,30 @@
+<!-- Loading state -->
+@if (loading()) {
+  <app-loading-spinner />
+
+} @else if (error()) {
+  <app-error-message [message]="error()!" />
+
+} @else if (items().length === 0) {
+  <app-empty-state message="No items found" />
+
+} @else {
+  <section class="example">
+
+    <header class="example__header">
+      <h1 class="example__title">{{ label() }}</h1>
+    </header>
+
+    <ul class="example__list">
+      @for (item of items(); track item.id) {
+        <li class="example__list-item">
+          <app-item-card
+            [item]="item"
+            (selected)="onSelect($event)"
+          />
+        </li>
+      }
+    </ul>
+
+  </section>
+}

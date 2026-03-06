@@ -1,0 +1,56 @@
+// Variables — define en styles/_variables.scss y usa aquí via var()
+// Nunca hardcodear colores o tamaños directamente
+
+.example {
+  // --- Block styles ---
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+
+  // --- Elements ---
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+  }
+
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__list {
+    display: grid;
+    gap: var(--spacing-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    // Responsive — mobile first
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__list-item {
+    // wrapper neutro — el estilo va en el card
+  }
+
+  // --- Modifiers ---
+  &--loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+}
