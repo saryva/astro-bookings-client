@@ -25,7 +25,7 @@ export class LaunchesService {
       .get<Launch[]>(`${API_URL}/launches`)
       .pipe(
         catchError((err) => {
-          this.error.set(err?.message ?? 'Failed to load launches');
+          this.error.set(err?.message || 'Failed to load launches');
           this.launches.set([]);
           this.loading.set(false);
           return EMPTY;
