@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { LoadingComponent } from './loading';
 
 describe('LoadingComponent', () => {
