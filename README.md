@@ -1,59 +1,116 @@
-# AstroBookingsClient
+# AstroBookings Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Angular SPA that consumes the AstroBookings REST API to let users browse rocket launches and book seats. Built as a training/demo project with a structured AI agent pipeline for development.
 
-## Development server
+## Prerequisites
 
-To start a local development server, run:
+- **Node.js** >= 18
+- **npm** >= 10
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Quick Start
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The dev server starts at `http://localhost:4200`.
 
-```bash
-ng generate --help
+## Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Dev server at http://localhost:4200 (`ng serve`) |
+| `npm run build` | Production build to `dist/` |
+| `npm test` | Unit tests with Vitest (`ng test`) |
+| `npm run watch` | Dev build with watch mode |
+
+## Tech Stack
+
+- **Angular 21** — standalone components, signals, new control flow syntax
+- **TypeScript 5.9** — strict mode
+- **Vitest** — unit tests via `@angular/build:unit-test`
+- **SCSS** — BEM methodology
+- **SSR** — `@angular/ssr` with Express (port 4000 for SSR, 4200 for dev)
+- **Prettier** — code formatting (100 printWidth, single quotes)
+
+## Architecture
+
+The app follows a **feature-first** folder structure with lazy-loaded routes. State management uses Angular Signals (`signal()`, `computed()`, `toSignal()`).
+
+```
+src/app/
+  app.ts                          # Root component (shell + router-outlet)
+  app.routes.ts                   # Top-level routes with lazy loading
+  app.config.ts                   # Application providers (router, http, hydration)
+  core/
+    api.config.ts                 # API base URL from environment
+    models/
+      launch.interface.ts         # Launch, Rocket interfaces
+      booking.interface.ts        # Booking, CreateBookingDto interfaces
+  shared/
+    components/
+      loading/                    # Loading spinner component
+      error-message/              # Error display component
+      empty-state/                # Empty state component
+  features/
+    launches/
+      launches.routes.ts          # Feature routes (stub — list + detail planned)
+    bookings/
+      bookings.routes.ts          # Feature routes (stub — list + form planned)
 ```
 
-## Building
+### Key Patterns
 
-To build the project run:
+- **Standalone components only** — no NgModules
+- **OnPush change detection** on all components
+- **Signal-based inputs** (`input()` / `input.required()`)
+- **Services**: `providedIn: 'root'`, expose state as signals (`data`, `loading`, `error`)
+- **HTTP calls** only through services, never from components
+- **SCSS**: BEM strict, CSS variables for colors, mobile-first, max 3 nesting levels
+- **Environment-based API config** — centralized `API_URL` constant, swapped at build time for production
 
-```bash
-ng build
-```
+### Routing
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+| Path | Feature | Load |
+|------|---------|------|
+| `/` | Redirect to `/launches` | — |
+| `/launches` | Launches | Lazy |
+| `/bookings` | Bookings | Lazy |
 
-## Running unit tests
+## Features
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### chore-core-setup
 
-```bash
-ng test
-```
+Foundation layer providing API configuration, domain models, and shared UI components.
 
-## Running end-to-end tests
+**What it includes:**
 
-For end-to-end (e2e) testing, run:
+- **Environment config** — `environment.ts` (dev) and `environment.prod.ts` (prod) with `apiUrl`, swapped via `fileReplacements` in `angular.json`
+- **API config** — `core/api.config.ts` exports `API_URL` from the active environment
+- **Domain models** — `Launch`, `Rocket`, `Booking`, `CreateBookingDto` interfaces
+- **Shared components:**
+  - `<app-loading>` — spinner with "Loading..." text
+  - `<app-error-message [message]="...">` — styled error display with `role="alert"`
+  - `<app-empty-state>` — default "No results found." or custom message
+- **App shell** — header with title + `<router-outlet>`
+- **Routing** — redirect `/` to `/launches`, lazy-loaded feature route stubs
+- **HttpClient** — `provideHttpClient(withFetch())` registered in app config
 
-```bash
-ng e2e
-```
+## Agent Pipeline
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The `.agents/` directory contains an AI agent pipeline for structured product development:
 
-## Additional Resources
+| Agent | Role | Output |
+|-------|------|--------|
+| 1-analyst | Business Analyst | `.agents/PRD.md` |
+| 2-architect | Frontend Architect | `.agents/ADD.md` |
+| 3-product-owner | Product Owner | `.agents/specs/backlog.md` |
+| 4-engineer | Technical Spec Writer | `.agents/specs/*.spec.md` |
+| 5-coder | Angular Developer | `src/` implementation |
+| 6-tester | Unit Tester (Vitest) | `*.spec.ts` + test report |
+| 7-e2e-tester | E2E Tester (Playwright) | `tests/*.spec.ts` + e2e report |
+| 8-cleaner | Code Reviewer | refactored code |
+| 9-documenter | Documenter | `README.md` + `implementations.md` |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Skills (reusable step-by-step guides with templates) live in `.agents/skills/`.
