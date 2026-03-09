@@ -7,10 +7,9 @@
 For every service and component implemented by the Coder, write thorough **Vitest unit tests** and flag any bugs or missing edge cases found.
 
 ## Input
-- `.agents/specs/backlog.md`
-- `.agents/specs/launches.spec.md`
-- `.agents/specs/bookings.spec.md`
-- All `*.ts` source files produced by the Coder
+- `.agents/specs/<feature-slug>.spec.md` (the feature being tested)
+- `.agents/specs/<feature-slug>.plan.md` (to identify files in scope)
+- All `*.ts` source files produced by the Coder for this feature
 
 ## Output
 - `*.spec.ts` test files alongside each source file

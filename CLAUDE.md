@@ -69,7 +69,7 @@ The `.agents/` directory contains an AI agent pipeline for structured product de
 | 6-tester | Unit Tester (Vitest) | specs + code | `*.spec.ts` + test report |
 | 7-e2e-tester | E2E Tester (Playwright) | backlog + running app | `tests/*.spec.ts` + e2e report |
 | 8-cleaner | Code Reviewer | code + tests | refactored code |
-| 9-dev-ops | DevOps | project | CI/CD config + README |
+| 9-documenter | Documenter | project + specs | `README.md` + `implementations.md` |
 
 Skills (reusable step-by-step guides with templates) live in `.agents/skills/`.
 

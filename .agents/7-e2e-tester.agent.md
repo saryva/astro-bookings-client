@@ -7,7 +7,7 @@
 Write automated E2E tests that verify every acceptance criterion in the backlog by exercising the running application through the browser.
 
 ## Input
-- `.agents/specs/backlog.md`
+- `.agents/specs/<feature-slug>.spec.md` (the feature being tested)
 - Running application (`npm start`)
 
 ## Output
