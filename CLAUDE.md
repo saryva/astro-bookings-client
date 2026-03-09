@@ -63,7 +63,7 @@ The `.agents/` directory contains an AI agent pipeline for structured product de
 |-------|------|-------|--------|
 | 1-analyst | Business Analyst | briefing | `.agents/PRD.md` |
 | 2-architect | Frontend Architect | PRD | `.agents/ADD.md` |
-| 3-product-owner | Product Owner | PRD + ADD | `.agents/specs/backlog.md` |
+| 3-product-owner | Product Owner | PRD + ADD | `.agents/specs/*.spec.md` |
 | 4-engineer | Technical Spec Writer | ADD + backlog | `.agents/specs/*.spec.md` |
 | 5-coder | Angular Developer | specs | `src/` implementation |
 | 6-tester | Unit Tester (Vitest) | specs + code | `*.spec.ts` + test report |
