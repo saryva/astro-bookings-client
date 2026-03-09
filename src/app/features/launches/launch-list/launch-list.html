@@ -1,0 +1,27 @@
+<section class="launch-list">
+  <h2 class="launch-list__title">Available Launches</h2>
+
+  @if (service.loading()) {
+    <app-loading />
+  } @else if (service.error()) {
+    <app-error-message [message]="service.error()!" />
+  } @else if (service.launches().length === 0) {
+    <app-empty-state message="No launches available." />
+  } @else {
+    <ul class="launch-list__grid">
+      @for (launch of service.launches(); track launch.id) {
+        <li>
+          <a class="launch-card" [routerLink]="['/launches', launch.id]">
+            <span class="launch-card__destination">{{ launch.destination }}</span>
+            <span class="launch-card__date">{{ launch.date | date: 'mediumDate' }}</span>
+            <span class="launch-card__rocket">{{ launch.rocket.name }}</span>
+            <span class="launch-card__price">{{ launch.pricePerSeat | currency: 'USD':'symbol':'1.0-0' }}</span>
+            <span class="launch-card__seats" [class.launch-card__seats--sold-out]="launch.availableSeats === 0">
+              {{ launch.availableSeats }} / {{ launch.totalSeats }} seats
+            </span>
+          </a>
+        </li>
+      }
+    </ul>
+  }
+</section>

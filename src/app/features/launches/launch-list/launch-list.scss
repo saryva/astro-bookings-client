@@ -1,0 +1,72 @@
+.launch-list {
+  &__title {
+    margin: 0 0 1.5rem;
+    font-size: 1.5rem;
+    color: var(--color-text-primary, #212121);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 960px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.launch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px var(--color-shadow, rgba(0, 0, 0, 0.12));
+  }
+
+  &__destination {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary, #3f51b5);
+  }
+
+  &__date {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #666);
+  }
+
+  &__rocket {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #666);
+  }
+
+  &__price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-primary, #212121);
+  }
+
+  &__seats {
+    font-size: 0.875rem;
+    color: var(--color-success, #2e7d32);
+
+    &--sold-out {
+      color: var(--color-error-text, #721c24);
+      font-weight: 600;
+    }
+  }
+}
