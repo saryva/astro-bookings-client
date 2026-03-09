@@ -1,0 +1,11 @@
+.empty-state {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--color-text-secondary, #666);
+
+  &__text {
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+}

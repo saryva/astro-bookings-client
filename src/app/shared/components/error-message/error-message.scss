@@ -1,0 +1,11 @@
+.error-message {
+  padding: 1rem;
+  border: 1px solid var(--color-error-border, #f5c6cb);
+  border-radius: 0.25rem;
+  background-color: var(--color-error-bg, #f8d7da);
+  color: var(--color-error-text, #721c24);
+
+  &__text {
+    word-break: break-word;
+  }
+}
