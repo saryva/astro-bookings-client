@@ -55,7 +55,9 @@ src/app/
       empty-state/                # Empty state component
   features/
     launches/
-      launches.routes.ts          # Feature routes (stub — list + detail planned)
+      launches.routes.ts          # Feature routes (list active, detail planned)
+      launches.service.ts         # HTTP service: fetches launches, exposes signals
+      launch-list/                # Launch list page component
     bookings/
       bookings.routes.ts          # Feature routes (stub — list + form planned)
 ```
@@ -96,6 +98,22 @@ Foundation layer providing API configuration, domain models, and shared UI compo
 - **App shell** — header with title + `<router-outlet>`
 - **Routing** — redirect `/` to `/launches`, lazy-loaded feature route stubs
 - **HttpClient** — `provideHttpClient(withFetch())` registered in app config
+
+### feat-launch-list
+
+Browse available rocket launches with destination, date, pricing, and seat availability.
+
+**Route:** `/launches`
+
+**What it includes:**
+
+- **LaunchesService** — fetches launches from `GET /api/launches`, exposes `launches`, `loading`, and `error` as signals
+- **LaunchListComponent** — page component at `/launches` that displays a responsive grid of launch cards
+- **Launch cards** show: destination, date (`DatePipe`), rocket name, price per seat (`CurrencyPipe`), and available/total seats
+- **State handling** — loading spinner, error message, and empty state via shared components
+- **Sold-out indicator** — visual styling when `availableSeats === 0`
+- **Navigation** — clicking a launch card navigates to `/launches/:id` (detail page planned)
+- **SSR** — `launches/**` routes set to `RenderMode.Client` to avoid prerendering API-dependent pages
 
 ## Agent Pipeline
 
